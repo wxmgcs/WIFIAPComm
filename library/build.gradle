@@ -23,4 +23,5 @@ dependencies {
     compile "com.android.support:support-v4:$rootProject.ext.supportLibVersion" //方案二
 }
 
+
 //apply from: '../maven_push.gradle'

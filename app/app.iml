@@ -123,11 +123,11 @@
     <orderEntry type="library" scope="TEST" name="junit:junit:4.12@jar" level="project" />
     <orderEntry type="library" name="android.arch.core:common:1.0.0@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-core-ui-27.0.2" level="project" />
+    <orderEntry type="library" name="__local_aars__:/Volumes/DATA2/github/wxmgcs/WIFIAPComm/library/libs/universal-image-loader-1.9.4.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.2.4@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-compat-27.0.2" level="project" />
     <orderEntry type="library" name="com.android.support:support-core-utils-27.0.2" level="project" />
     <orderEntry type="library" name="com.android.support:support-fragment-27.0.2" level="project" />
-    <orderEntry type="library" name="__local_aars__:E.\project\asop\WIFIAPComm\library\libs\universal-image-loader-1.9.4.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-media-compat-27.0.2" level="project" />
     <orderEntry type="library" name="android.arch.lifecycle:runtime-1.0.3" level="project" />
     <orderEntry type="library" name="com.android.support:support-vector-drawable-27.0.2" level="project" />

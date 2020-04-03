@@ -46,6 +46,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import ru.bartwell.exfilepicker.ExFilePicker;
 import ru.bartwell.exfilepicker.ExFilePickerParcelObject;
@@ -344,6 +347,14 @@ public class TransferActivity extends AppCompatActivity implements AdapterView.O
         netThreadHelper = new NetThreadHelper(handler);
         netThreadHelper.connectSocket();    //开始监听数据
         netThreadHelper.noticeOnline();    //广播上线
+
+        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
+        scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                netThreadHelper.noticeOnline();
+            }
+        },1,3, TimeUnit.SECONDS);
 
         mBuilder = new AlertDialog.Builder(TransferActivity.this)
                 .setIcon(R.mipmap.ic_launcher)

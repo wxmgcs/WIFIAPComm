@@ -143,10 +143,19 @@ public class TransferActivity extends AppCompatActivity implements AdapterView.O
                                                             if (TextUtils.equals(item.getUser().getIp(), senderIp)) {
                                                                 item.setFileCount(fileCount);
                                                                 item.setPercent(percent);
-                                                                item.getFileText().setText(fileCount + "/" + item.getFileSize());
-                                                                item.getPercentText().setText(percent + "%");
-                                                                item.getProgressBar().setVisibility(View.VISIBLE);
-                                                                item.getProgressBar().setProgress(percent);
+
+                                                                if(item.getFileText() != null){
+                                                                    item.getFileText().setText(fileCount + "/" + item.getFileSize());
+                                                                }
+
+                                                                if(item.getPercentText() != null){
+                                                                    item.getPercentText().setText(percent + "%");
+                                                                }
+
+                                                                if(item.getProgressBar() != null){
+                                                                    item.getProgressBar().setVisibility(View.VISIBLE);
+                                                                    item.getProgressBar().setProgress(percent);
+                                                                }
                                                             }
                                                         }
                                                         mNotification.contentView.setProgressBar(R.id.pd_download, 100, percent, false);
@@ -163,9 +172,18 @@ public class TransferActivity extends AppCompatActivity implements AdapterView.O
                                                         //遍历上线用户
                                                         for (TransmissionBean item : wifiData) {
                                                             if (TextUtils.equals(item.getUser().getIp(), senderIp) && item.getFileCount() == (item.getFileSize() - 1)) {
-                                                                item.getFileText().setText(item.getFileSize() + "/" + item.getFileSize());
-                                                                item.getPercentText().setText((during / 1000) + "秒");
-                                                                item.getProgressBar().setVisibility(View.GONE);
+                                                                if(item.getFileText() != null){
+                                                                    item.getFileText().setText(item.getFileSize() + "/" + item.getFileSize());
+                                                                }
+
+                                                                if(item.getPercentText() != null){
+                                                                    item.getPercentText().setText((during / 1000) + "秒");
+                                                                }
+
+                                                                if(item.getProgressBar() != null){
+                                                                    item.getProgressBar().setVisibility(View.GONE);
+                                                                }
+
                                                                 item.setFileSize(0);
                                                             }
                                                         }
@@ -207,8 +225,14 @@ public class TransferActivity extends AppCompatActivity implements AdapterView.O
                     for (TransmissionBean item : wifiData) {
                         if (TextUtils.equals(item.getUser().getIp(), extraMsg[0])) {
                             item.setFileSize(fileInfos.length);
-                            item.getFileText().setText("0/" + fileInfos.length);
-                            item.getProgressBar().setVisibility(View.VISIBLE);
+
+                            if(item.getFileText() != null){
+                                item.getFileText().setText("0/" + fileInfos.length);
+                            }
+
+                            if(item.getProgressBar() != null){
+                                item.getProgressBar().setVisibility(View.VISIBLE);
+                            }
                         }
                     }
 
@@ -225,10 +249,21 @@ public class TransferActivity extends AppCompatActivity implements AdapterView.O
                         if (TextUtils.equals(item.getUser().getIp(), senderIp)) {
                             item.setFileCount(sendedPer[0]);
                             item.setPercent(sendedPer[1]);
-                            item.getFileText().setText(sendedPer[0] + "/" + item.getFileSize());
-                            item.getPercentText().setText(sendedPer[1] + "%");
-                            item.getProgressBar().setVisibility(View.VISIBLE);
-                            item.getProgressBar().setProgress(sendedPer[1]);
+
+                            if(item.getFileText() != null){
+                                item.getFileText().setText(sendedPer[0] + "/" + item.getFileSize());
+                            }
+
+                            if(item.getPercentText() != null){
+                                item.getPercentText().setText(sendedPer[1] + "%");
+                            }
+
+                            if(item.getProgressBar() != null){
+                                item.getProgressBar().setVisibility(View.VISIBLE);
+                                item.getProgressBar().setProgress(sendedPer[1]);
+                            }
+
+
                         }
                     }
 
@@ -257,9 +292,18 @@ public class TransferActivity extends AppCompatActivity implements AdapterView.O
                     //遍历上线用户
                     for (TransmissionBean item : wifiData) {
                         if (TextUtils.equals(item.getUser().getIp(), senderIp) && item.getFileCount() == (item.getFileSize() - 1)) {
-                            item.getFileText().setText(item.getFileSize() + "/" + item.getFileSize());
-                            item.getPercentText().setText((during / 1000) + "秒");
-                            item.getProgressBar().setVisibility(View.GONE);
+
+                            if(item.getFileText() != null){
+                                item.getFileText().setText(item.getFileSize() + "/" + item.getFileSize());
+                            }
+
+                            if(item.getPercentText() != null){
+                                item.getPercentText().setText((during / 1000) + "秒");
+                            }
+
+                            if(item.getProgressBar() != null){
+                                item.getProgressBar().setVisibility(View.GONE);
+                            }
                             item.setFileSize(0);
                         }
                     }
@@ -320,7 +364,7 @@ public class TransferActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wifi_tran_file);
-        WifiUtils.mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        WifiUtils.mWifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         listView = (ListView) findViewById(R.id.listView);
         curStatue = (TextView) findViewById(R.id.curStatue);
         curHostIp = (TextView) findViewById(R.id.curHostIp);
